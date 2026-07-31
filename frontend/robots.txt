@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /checkout.html
+Disallow: /login.html
+Disallow: /order-confirmation.html
+
+Sitemap: https://www.pieceandstory.com/sitemap.xml

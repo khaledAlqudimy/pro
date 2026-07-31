@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إتمام الطلب | Piece & Story</title>
+<meta name="robots" content="noindex, nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.moyasar.com; font-src 'self' https://fonts.gstatic.com data:; script-src 'self' https://cdn.moyasar.com; connect-src 'self' https://api.moyasar.com; frame-src https://cdn.moyasar.com; object-src 'none'; base-uri 'self'">
+<link rel="icon" href="assets/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-bar">
+    <a href="index.html" class="brand">
+      <div class="brand-mark"><img src="assets/logo.png" alt="شعار Piece & Story" width="40" height="40"></div>
+      <div class="brand-text"><b>Piece &amp; Story</b><small>قصة الماضي وجمال الحاضر</small></div>
+    </a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+      <a href="shop.html" data-i18n="nav_shop">المتجر</a>
+      <a href="auctions.html" data-i18n="nav_auctions">المزادات</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn lang-btn" data-lang-toggle title="Switch language / تبديل اللغة">EN</button>
+    </div>
+  </div>
+</header>
+
+<section class="section-tight">
+  <div class="container">
+    <h1 style="font-size:clamp(24px,3vw,34px);margin-bottom:6px;" data-i18n="checkout_page_title">إتمام الطلب</h1>
+
+    <div id="checkoutEmpty" class="checkout-notice" style="display:none;">
+      <p>سلتك فارغة حاليًا.</p>
+      <a class="btn btn-gold" href="shop.html" data-i18n="hero_cta_shop">تصفّح المجموعة</a>
+    </div>
+
+    <div id="checkoutNoBackend" class="checkout-notice" style="display:none;">
+      <p>إتمام الشراء عبر بوابات الدفع يتطلب اتصالًا بالخادم الخلفي (backend) وهو غير متصل في وضع المعاينة الحالي.</p>
+      <p>يمكنك بدل ذلك إتمام طلبك مباشرة عبر واتساب:</p>
+      <button class="btn btn-primary" id="fallbackWhatsappBtn" data-i18n="checkout_whatsapp">إتمام الطلب عبر واتساب</button>
+    </div>
+
+    <div class="checkout-layout" id="checkoutForm-wrap">
+      <form id="checkoutForm" class="checkout-form">
+        <div class="logged-in-badge" id="loggedInBadge" style="display:none;">
+          <span>مسجّل الدخول باسم <b id="loggedInName"></b></span>
+        </div>
+
+        <div id="guestSection" class="form-section">
+          <h3 data-i18n="checkout_contact">بيانات التواصل</h3>
+          <p class="form-hint" data-i18n="guest_checkout">أو أكمل الشراء كضيف دون إنشاء حساب</p>
+          <label>البريد الإلكتروني<input type="email" id="guestEmail"></label>
+          <p class="form-hint">لديك حساب؟ <a href="login.html?next=checkout.html" data-i18n="login">تسجيل الدخول</a> لتتبّع طلباتك لاحقًا.</p>
+        </div>
+
+        <div class="form-section">
+          <h3 data-i18n="checkout_shipping">عنوان الشحن</h3>
+          <div class="form-grid">
+            <label data-i18n="full_name">الاسم الكامل<input type="text" id="fullName" required></label>
+            <label data-i18n="phone">رقم الجوال<input type="tel" id="phone" placeholder="05xxxxxxxx" required></label>
+            <label data-i18n="city">المدينة<input type="text" id="city" required></label>
+            <label data-i18n="district">الحي<input type="text" id="district"></label>
+            <label class="full-width" data-i18n="street">الشارع<input type="text" id="street" required></label>
+            <label data-i18n="building_no">رقم المبنى<input type="text" id="buildingNo"></label>
+            <label class="full-width" data-i18n="additional_info">تفاصيل إضافية<input type="text" id="additionalInfo" placeholder="أقرب معلم، رقم شقة..."></label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 data-i18n="checkout_payment">طريقة الدفع</h3>
+          <div class="payment-options">
+            <label class="payment-option active" data-provider="MOYASAR">
+              <input type="radio" name="paymentProvider" value="MOYASAR" checked>
+              <div><b>مدى / Visa / Mastercard / Apple Pay / STC Pay</b><span>دفع فوري وآمن عبر Moyasar</span></div>
+            </label>
+            <label class="payment-option" data-provider="TABBY">
+              <input type="radio" name="paymentProvider" value="TABBY">
+              <div><b>Tabby</b><span>قسّطها على 4 دفعات دون فوائد</span></div>
+            </label>
+            <label class="payment-option" data-provider="TAMARA">
+              <input type="radio" name="paymentProvider" value="TAMARA">
+              <div><b>Tamara</b><span>قسّطها دون فوائد مع تمارا</span></div>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-gold btn-block" id="placeOrderBtn" data-i18n="place_order">إتمام الطلب والدفع</button>
+        <p class="secure-note">🔒 بياناتك ومدفوعاتك مشفّرة بالكامل ولا تصل بيانات بطاقتك إلى خوادمنا مطلقًا.</p>
+      </form>
+
+      <aside class="checkout-summary">
+        <h3 data-i18n="checkout_summary">ملخص الطلب</h3>
+        <div id="summaryItems"></div>
+        <div class="summary-row"><span>المجموع الفرعي</span><b id="summarySubtotal">0 ر.س</b></div>
+        <div class="summary-row"><span>الشحن</span><b>مجاني</b></div>
+        <div class="summary-row summary-total"><span data-i18n="cart_total">الإجمالي</span><b id="summaryTotal">0 ر.س</b></div>
+      </aside>
+    </div>
+
+    <div id="paymentWidgetHost" style="display:none;max-width:480px;margin:0 auto;"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-bottom"><span>© 2026 Piece &amp; Story. جميع الحقوق محفوظة.</span></div>
+  </div>
+</footer>
+
+<script src="js/security.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/api.js"></script>
+<script src="js/icons.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/pages/checkout.js"></script>
+</body>
+</html>
